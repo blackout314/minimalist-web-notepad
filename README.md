@@ -4,12 +4,37 @@ This is an open source clone of notepad.cc, which is now defunct.
 
 See demo at https://notes.orga.cat or https://notes.orga.cat/whatever.
 
+## Usage (CLI)
+
+Using the command-line interface you can both save and retrieve notes. Here are some examples using `curl`:
+
+Retrieve a note's content and save it to a local file:
+
+```
+curl https://example.com/notes/test > test.txt
+```
+
+Save specific text to a note:
+
+```
+curl https://example.com/notes/test -d 'hello,
+welcome to my pad!
+'
+```
+
+Save the content of a local file (e.g., `/etc/hosts`) to a note:
+
+```
+cat /etc/hosts | curl https://example.com/notes/hosts --data-binary @-
+```
+
 ## Installation
 
 At the top of `index.php` file, change `$base_url` variable to point to your
 site.
 
 Make sure the web server is allowed to write to the `_tmp` directory.
+
 
 ### On Apache
 
