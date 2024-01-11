@@ -28,6 +28,21 @@ body {
     display: none;
 }
 
+.saved {
+	color: white;
+    font-size: 10px;
+    animation: blinker 1s linear infinite;
+    margin-top: 4px; margin-left: 4px;
+}
+.saved--hide {
+	display: none;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background: #383934;
