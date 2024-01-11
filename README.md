@@ -4,6 +4,11 @@ This is an open source clone of notepad.cc, which is now defunct.
 
 See demo at https://notes.orga.cat or https://notes.orga.cat/whatever.
 
+## Example
+* saved notification
+![example.gif](example.gif)
+
+
 ## Usage (CLI)
 
 Using the command-line interface you can both save and retrieve notes. Here are some examples using `curl`:
