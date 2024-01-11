@@ -30,13 +30,13 @@ if (!isset($_note) || !preg_match('/^[a-zA-Z0-9_-]+$/', $_note) || strlen($_note
 
 $path = $save_path . '/' . $_note;
 
-if (isset($_POST['text'])) {
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $text = isset($_POST['text']) ? $_POST['text'] : file_get_contents("php://input");
     // Update file.
-    file_put_contents($path, $_POST['text']);
+    file_put_contents($path, $text);
 
     // If provided input is empty, delete file.
-    if (!strlen($_POST['text'])) {
+    if (!strlen($text)) {
         unlink($path);
     }
     die;
@@ -70,6 +70,7 @@ if (isset($_raw) || strpos($_SERVER['HTTP_USER_AGENT'], 'curl') === 0 || strpos(
             }
         ?></textarea>
     </div>
+    <div id="saved" class="saved saved--hide">saved</div>
     <pre id="printable"></pre>
     <script src="<?php print $base_url; ?>/script.js"></script>
 </body>
