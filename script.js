@@ -1,7 +1,11 @@
 /*! Minimalist Web Notepad | https://github.com/pereorga/minimalist-web-notepad */
 
 function uploadContent() {
+    var saved = document.getElementById('saved');
+    
     if (content !== textarea.value) {
+        saved.classList.remove('saved--hide');
+        
         var temp = textarea.value;
         var request = new XMLHttpRequest();
         request.open('POST', window.location.href, true);
@@ -20,7 +24,8 @@ function uploadContent() {
             setTimeout(uploadContent, 1000);
         }
         request.send('text=' + encodeURIComponent(temp));
-
+        
+        setTimeout(function(){ saved.classList.add('saved--hide'); },1000);
         // Update the printable contents.
         printable.removeChild(printable.firstChild);
         printable.appendChild(document.createTextNode(temp));
